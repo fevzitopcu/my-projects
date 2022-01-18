@@ -2,7 +2,7 @@
 
 Purpose of the this hands-on training is to give the students quick introductory knowledge of how to create a Flask web application on local.
 
-## Learning Outcomes
+## Learning Outcomes.
 
 At the end of the this hands-on training, students will be able to;
 
