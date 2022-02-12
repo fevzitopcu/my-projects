@@ -27,7 +27,7 @@ Purpose of the this project is to learn how to take a snapshot of EC2 instance, 
 
 Part 1 - Create an EC2 instance (EC2-A) with an additional volume (10 GiB)
 
-Part 2 - Mounting the additional volume and adding a test.txt file to additional volume
+Part 2 - Mounting the additional volume and adding a homework.txt file to additional volume
 
 Part 3 - Taking snapshot of the EC2 (EC2-A) with 2 volumes
 
