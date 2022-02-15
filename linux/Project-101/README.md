@@ -1,14 +1,28 @@
-# Project-101 : Backup, User and Group Management, String Manipulation with Linux Commands and Bash Scripting
-
-## Description
-
-You will be working in different roles during this project and assigned to various tasks. These tasks will be based on the problems faced by a DevOps in his/her daily life.
-
-## Problem Statement
-Companies have problems based on their infrastructures and needs. In this project, you will be working in different roles and you will be assigned some tasks which have backing up, security issues, user and password management, and some string manipulation duties. Sometimes, you need to prepair some bash script files or execute some commands, to be able to accomplish them. There are four tasks. Manager's instructions belonging them can be found below. Please read them carefully and fulfill requirements. Good Luck!
+# Project-101 : 
+Backup
+User and Group Management
+String Manipulation with Linux Commands and Bash Scripting
 
 ## Part 1: Security Issue
-You are working in a Financial Company as DevSecOps. Recently, one of your instances has been terminated by someone within the firm. That instance was very important for firm's web-app and also your infrastructure has been affected by this termination. Your team lead is suspecting `Serdar` user. You have assigned to find instances' ids terminated by `Serdar` user. You have Cloudtrail event history file named `event_history.csv`. Instance ids within this event history look like `i-0c127ab5cdf997cf4`. You have to apply some filtering and string manipulation commands to find ids. To be able to handle this tasks, you decided to create a bash script, then, save instances' ids terminated by `Serdar` user in `result.txt` file.  
+You are working in Company as DevSecOps.
+A person terminated the system
+Your team lead is suspecting `Serdar` user
+You have assigned to find instances' ids terminated by `Serdar` user.
+Instance ids within this event history look like `i-0c127ab5cdf997cf4`.
+You have Cloudtrail event history file named `event_history.csv`.
+To be able to handle this tasks, you decided to create a bash script, then, save instances' ids terminated by `Serdar` user in `result.txt` file.  
+
+# Part 1 Solution:
+
+#! /bin/bash
+
+if [[ ! -f $1 ]]
+then
+	echo "please type a file"
+	exit
+fi
+
+cat event_history.csv | grep serdar | grep Terminate | grep -Eo "i-[a-zA-Z0-9]{17}" | sort -u > result.txt
 
 ## Part 2: User and Password Script
 You're working as a System Administrator for a e-commerce company. The latest company initiative requires you to write an ansible file for dozens of servers. You're falling behind schedule and are going to miss your deadline for these ansible files because you are constantly being interrupted by the HR calling you to create new Linux accounts for all the people in the company who have been recruited to test out the company's newest Linux-based application.
