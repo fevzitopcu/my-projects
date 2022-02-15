@@ -12,7 +12,7 @@ Instance ids within this event history look like `i-0c127ab5cdf997cf4`.
 You have Cloudtrail event history file named `event_history.csv`.
 To be able to handle this tasks, you decided to create a bash script, then, save instances' ids terminated by `Serdar` user in `result.txt` file.  
 
-# Part 1 Solution:
+### Part 1 Solution:
 
 #! /bin/bash
 
