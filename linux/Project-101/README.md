@@ -4,15 +4,9 @@ User and Group Management
 String Manipulation with Linux Commands and Bash Scripting
 
 ## Part 1: Security Issue
-You are working in Company as DevSecOps.
-A person terminated the system
-Your team lead is suspecting `Serdar` user
-You have assigned to find instances' ids terminated by `Serdar` user.
-Instance ids within this event history look like `i-0c127ab5cdf997cf4`.
-You have Cloudtrail event history file named `event_history.csv`.
-To be able to handle this tasks, you decided to create a bash script, then, save instances' ids terminated by `Serdar` user in `result.txt` file.  
+You are working in a Financial Company as DevSecOps. Recently, one of your instances has been terminated by someone within the firm. That instance was very important for firm's web-app and also your infrastructure has been affected by this termination. Your team lead is suspecting `Serdar` user. You have assigned to find instances' ids terminated by `Serdar` user. You have Cloudtrail event history file named `event_history.csv`. Instance ids within this event history look like `i-0c127ab5cdf997cf4`. You have to apply some filtering and string manipulation commands to find ids. To be able to handle this tasks, you decided to create a bash script, then, save instances' ids terminated by `Serdar` user in `result.txt` file.
 
-### Part 1 Solution:
+## Part 1 Solution:
 
 #! /bin/bash
 
@@ -30,6 +24,51 @@ You're working as a System Administrator for a e-commerce company. The latest co
 In order to meet your deadline and keep your sanity, you decide to write a shell script that will create new user account and automatically generate a password for each of new account. Once you're done with the shell script you can put the HR in charge of creating new accounts which will finally allow you to work uninterrupted and complete your server deployments on time. 
 
 Your script accepts user account name and comments as parameter. Then create a new user and a password for them. At the same time, you want users to change their password, when they login the system at the first time. Please create this bash scripting file named `user_password.sh`. 
+
+## Part 2 Solution:
+
+#!/bin/bash
+
+# This script creates a new user on the local system.
+# You will be prompted to enter the username (login), the person name, and a password.
+# The username, password, and host for the account will be displayed.
+
+# Make sure the script is being executed with superuser privileges.
+
+if [[ "$UID" -ne 0 ]]
+then
+  echo "Please run this command with sudo" 
+  exit
+fi
+
+# Get the username (login).
+read -p "Please Enter Username : " username
+# Get the comment (contents for the description field).
+read -p "Please Enter the comment : " comment
+# Get the password.
+read -s -p "Please Enter Password : " password
+# Create the account.
+useradd -c $comment -m $username
+# Check to see if the useradd command succeeded.
+# We don't want to tell the user that an account was created when it hasn't been.
+
+if [[ $? -eq 0 ]]
+then
+  echo "Success! User has been created"
+fi
+# Set the password.
+echo $password | passwd --stdin $username
+# Check to see if the passwd command succeeded.
+if [[ $? -eq 0 ]]
+then
+  echo "password Success!" 
+fi
+# Force password change on first login.
+passwd -e $username
+# Display the username, password, and the host where the user was created.
+echo -e "Your username: $username
+Your password: $password
+Hostname : $HOSTNAME"
 
 ## Part 3: Baking up and Cronjob
 
