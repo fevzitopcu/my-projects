@@ -1,0 +1,7 @@
+1. cat auth.log | grep -i "invalid user " | cut -d' ' -f 8 | sort >>invalid_user.txt
+2. cat auth.log | grep -i "invalid user " | cut -d' ' -f 9 | sort >>invalid_user.txt
+3. cat invalid_user.sh | grep -v "from" | grep -v "user" > new_invalid_user.txt
+
+
+alernatif ama eksik
+1- cat auth.log | grep -i "invalid user " | awk -F' ' '{print $8}' | sed 's/user//g;s/for//g' | sort | uniq -c

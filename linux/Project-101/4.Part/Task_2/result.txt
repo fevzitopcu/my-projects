@@ -1,0 +1,4 @@
+1- sed 's/\\n/\n/g' certificate.pem | tee new.pem
+2- echo -e $(cat certificate.pem)
+3- echo -e $(cat certificate.pem) | tee new.pem
+4- sed -r "s/\n/\n/g" certificate.pem
