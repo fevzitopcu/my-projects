@@ -9,7 +9,7 @@ from flaskext.mysql import MySQL
 app = Flask(__name__)
 
 # The hardest part of this project is to get endpoint of RDS instances. Since our RDS is created within cloudformation template, we need to get RDS endpoint and paste it here as environmental variable using Launch templates user data. 
-db_endpoint = open("/home/ec2-user/phonebook/dbserver.endpoint", 'r', encoding='UTF-8') 
+db_endpoint = open("/home/ec2-user//my-projects/devops/phonebook/dbserver.endpoint", 'r', encoding='UTF-8') 
 
 # Configure mysql database
 
@@ -129,9 +129,9 @@ def find_records():
     if request.method == 'POST':
         keyword = request.form['username']
         persons_app = find_persons(keyword) # to avoid confusion, I use person_app in this application, and use person_html for html file.
-        return render_template('index.html', persons_html=persons_app, keyword=keyword, show_result=True, developer_name='Fevzi-Topcu')
+        return render_template('index.html', persons_html=persons_app, keyword=keyword, show_result=True, developer_name='Fevzi Topcu')
     else:
-        return render_template('index.html', show_result=False, developer_name='Fevzi-Topcu')
+        return render_template('index.html', show_result=False, developer_name='Fevzi Topcu')
 
 
 # Write a function named `add_record` which inserts new record to the database using `GET` and `POST` methods,
